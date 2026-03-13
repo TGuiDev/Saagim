@@ -5,7 +5,7 @@ const aboutNotes = [
   {
     icon: HiMiniChatBubbleLeftRight,
     title: 'Chat Ativo',
-    text: 'Interacao constante, feedbacks rapidos e ambiente acolhedor para perguntas e colabs.',
+    text: 'Interacao constante, feedbacks rápidos e ambiente acolhedor para perguntas e colabs.',
   },
   {
     icon: HiMiniBolt,
@@ -15,7 +15,7 @@ const aboutNotes = [
   {
     icon: HiMiniSparkles,
     title: 'Ranking e Visibilidade',
-    text: 'Participacao ativa te coloca no ranking, ganhando destaque e reconhecimento na comunidade.',
+    text: 'Participação ativa te coloca no ranking, ganhando destaque e reconhecimento na comunidade.',
   },
 ]
 

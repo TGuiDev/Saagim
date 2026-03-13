@@ -1,6 +1,30 @@
 import { faq } from '../data/content'
 import { HiMiniChatBubbleOvalLeftEllipsis, HiMiniMinusSmall, HiMiniPlusSmall } from 'react-icons/hi2'
 
+function renderAnswer(answer) {
+  if (typeof answer === 'string') {
+    return answer
+  }
+
+  if (Array.isArray(answer)) {
+    return answer.map((part, idx) => {
+      if (part.text) {
+        return <span key={idx}>{part.text}</span>
+      }
+      if (part.channel) {
+        return (
+          <span key={idx} className="inline-flex items-center gap-0.5 rounded-md bg-blue-500/20 px-2 py-0.5 text-blue-400 font-mono text-sm">
+            {part.channel}
+          </span>
+        )
+      }
+      return null
+    })
+  }
+
+  return answer
+}
+
 function FaqSection() {
   return (
     <section id="faq" className="reveal mt-10 md:mt-12">
@@ -27,7 +51,7 @@ function FaqSection() {
             </summary>
 
             <div className="faq-answer-wrap mt-4 pl-0 sm:pl-11">
-              <p className="faq-answer text-sm">{item.a}</p>
+              <p className="faq-answer text-sm">{renderAnswer(item.a)}</p>
             </div>
           </details>
         ))}

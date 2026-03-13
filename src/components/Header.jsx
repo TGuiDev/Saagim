@@ -33,7 +33,7 @@ function Header() {
               href="https://discord.gg/saagimtwo"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-600 hidden items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition sm:inline-flex sm:px-5 sm:text-sm"
+              className="bg-blue-600 text-white hidden items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition sm:inline-flex sm:px-5 sm:text-sm"
             >
               <FaDiscord className="text-base" />
               Discord
