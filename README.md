@@ -7,7 +7,7 @@ Landing page single-page criada em React + Vite + Tailwind CSS + GSAP para apres
 - React 19
 - Vite
 - Tailwind CSS 4
-- GSAP (animacoes de entrada e scroll)
+- GSAP (animações de entrada e scroll)
 - react-icons (iconografia)
 - react-fast-marquee (faixas continuas de destaque)
 
@@ -36,9 +36,9 @@ npm run build
 npm run preview
 ```
 
-## Direcao visual
+## Direção visual
 
 - Estetica anime inspirada em landing pages de personagem (estilo Zero Two), sem uso de assets protegidos.
 - Paleta neon/rose/cyan com atmosfera dramatica.
 - Tipografia expressiva com paines, baloes de fala, slashes e textura de dots.
-- Animacoes suaves com GSAP para entrada de blocos e efeito de profundidade no fundo.
+- Animações suaves com GSAP para entrada de blocos e efeito de profundidade no fundo.
