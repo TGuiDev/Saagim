@@ -1,5 +1,6 @@
 import Marquee from 'react-fast-marquee'
 import { HiMiniArrowUpRight, HiMiniSparkles, HiMiniStar } from 'react-icons/hi2'
+import spiderAvatar from '../assets/spider-avatar.jpg'
 
 // const ctaMarks = ['ux', 'identidade', 'impacto', 'presenca', 'vibe', 'discord energy']
 
@@ -40,7 +41,7 @@ function FinalCtaSection() {
             <div className="speech-bubble-card speech-bubble-card-note panel-reveal p-5 sm:p-6">
               <div className="flex items-center gap-3 text-[#5a2218]">
                 {/* <span className="icon-chip icon-chip-light"></span> */}
-                <img className="h-10 w-10 rounded-full" src="https://cdn.discordapp.com/avatars/1076928114246025256/d7935f75339513ffdb8307d2a8eefa7d.png?size=256" alt="" />
+                <img className="h-10 w-10 rounded-full object-cover border border-[#7b3128]/20" src={spiderAvatar} alt="spiderzxss avatar" />
                 <span className="section-kicker text-xl! text-[#7b3128]!">spiderzxss</span>
               </div>
               <p className="mt-4 text-sm text-[#5e261d] sm:text-base">

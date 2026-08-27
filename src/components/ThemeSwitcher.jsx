@@ -66,7 +66,7 @@ function ThemeSwitcher({ className = '' }) {
               '--theme-switcher-delay': `${index * 28}ms`,
             }}
             onClick={() => {
-              setThemeId(theme.id, triggerRef.current)
+              setThemeId(theme.id)
               setOpen(false)
             }}
           >

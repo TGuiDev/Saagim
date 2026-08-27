@@ -12,11 +12,8 @@ function Header() {
     <header className="topbar relative z-90 mx-auto py-3 w-full max-w-6xl px-2 md:px-3">
       <div className="theme-nav-surface relative z-90 rounded-2xl px-3 py-3 shadow-[0_12px_36px_rgba(0,0,0,0.24)] backdrop-blur-md sm:px-4">
         <div className="flex items-center justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-            <img className="rounded-md h-8 w-8" src="https://images-ext-1.discordapp.net/external/GdNL_bPLS83xuQv14ch82CjZtVCIzdmO7M-pXdPsdP4/%3Fsize%3D1024/https/cdn.discordapp.com/icons/1074040581535309854/f9a6638cdddcc92b165a4aaac1e4bc33.png?format=webp&quality=lossless&width=692&height=692" alt="" />
-            <div className="min-w-0">
-              <p className="theme-text font-display truncate text-xl tracking-wide sm:text-2xl">SAAGIM TWO</p>
-            </div>
+          <div className="flex min-w-0 items-center">
+            <p className="theme-text font-display truncate text-xl tracking-wide sm:text-2xl">SAAGIM TWO</p>
           </div>
 
           <nav className="hidden items-center gap-7 text-sm font-semibold md:flex">

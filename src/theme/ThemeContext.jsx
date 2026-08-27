@@ -6,36 +6,20 @@ import { defaultThemeId, themes } from './themes'
 const THEME_STORAGE_KEY = 'saagim-theme'
 
 function applyThemeToDocument(theme) {
+  if (!theme) return
   const root = document.documentElement
   root.setAttribute('data-theme', theme.id)
 
-  Object.entries(theme.vars).forEach(([token, value]) => {
-    root.style.setProperty(token, value)
-  })
-}
-
-function setThemeTransitionOrigin(originElement) {
-  if (!originElement) {
-    return
+  if (theme.vars) {
+    Object.entries(theme.vars).forEach(([token, value]) => {
+      root.style.setProperty(token, value)
+    })
   }
-
-  const root = document.documentElement
-  const rect = originElement.getBoundingClientRect()
-  const centerX = rect.left + rect.width / 2
-  const centerY = rect.top + rect.height / 2
-  const radius = Math.hypot(
-    Math.max(centerX, window.innerWidth - centerX),
-    Math.max(centerY, window.innerHeight - centerY),
-  )
-
-  root.style.setProperty('--theme-transition-x', `${centerX}px`)
-  root.style.setProperty('--theme-transition-y', `${centerY}px`)
-  root.style.setProperty('--theme-transition-radius', `${radius}px`)
 }
 
 export function ThemeProvider({ children }) {
   const [themeId, setThemeIdState] = useState(() => {
-    const storedThemeId = window.localStorage.getItem(THEME_STORAGE_KEY)
+    const storedThemeId = typeof window !== 'undefined' ? window.localStorage.getItem(THEME_STORAGE_KEY) : null
     return themes.some((theme) => theme.id === storedThemeId) ? storedThemeId : defaultThemeId
   })
 
@@ -49,26 +33,35 @@ export function ThemeProvider({ children }) {
     window.localStorage.setItem(THEME_STORAGE_KEY, currentTheme.id)
   }, [currentTheme])
 
-  const setThemeId = useCallback((nextThemeId, originElement) => {
+  const setThemeId = useCallback((nextThemeId) => {
     if (nextThemeId === themeId) {
       return
     }
 
-    setThemeTransitionOrigin(originElement)
-
+    const nextTheme = themes.find((theme) => theme.id === nextThemeId) ?? themes[0]
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const canTransition = typeof document.startViewTransition === 'function' && !reduceMotion
 
     if (!canTransition) {
+      applyThemeToDocument(nextTheme)
+      window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme.id)
       setThemeIdState(nextThemeId)
       return
     }
 
-    document.startViewTransition(() => {
-      flushSync(() => {
-        setThemeIdState(nextThemeId)
+    try {
+      document.startViewTransition(() => {
+        applyThemeToDocument(nextTheme)
+        window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme.id)
+        flushSync(() => {
+          setThemeIdState(nextThemeId)
+        })
       })
-    })
+    } catch {
+      applyThemeToDocument(nextTheme)
+      window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme.id)
+      setThemeIdState(nextThemeId)
+    }
   }, [themeId])
 
   const value = useMemo(
